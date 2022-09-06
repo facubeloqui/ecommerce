@@ -1,12 +1,16 @@
 import React from 'react'
 
-export function Card () {
+export default function Card () {
 
   return (
     <>
-    <div className="card product-item border-0 mb-4">
+    <div className="container-fluid pt-5">
+    <div className="row px-xl-5 pb-3">
+
+         <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div className="card product-item border-0 mb-4">
                     <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img className="img-fluid w-100" src="img/product-6.jpg" alt=""/>
+                        <img className="img-fluid w-100" src="img/product-1.jpg" alt=""/>
                     </div>
                     <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
@@ -18,7 +22,16 @@ export function Card () {
                         <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
                         <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                     </div>
-    </div>
+                </div>
+            </div>
+            
+
+            
+         
+      
+      
+    </div> //Row
+    </div> //Container
     </>
   )
 }
