@@ -1,3 +1,4 @@
+import React from 'react'
 import logo from './logo.svg';
 import './App.css';
 import Topbar from './Components/Topbar';
@@ -7,7 +8,7 @@ import Categories from './Components/Categories';
 import Offer from './Components/Offer';
 import Card from './Components/Card';
 
-function App() {
+export default function index() {
   return (
     <>
     <Topbar/>
@@ -20,7 +21,5 @@ function App() {
     </div>
     <Card/>
     </>
-  );
+  )
 }
-
-export default App;
