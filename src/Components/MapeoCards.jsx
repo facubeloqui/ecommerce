@@ -6,13 +6,17 @@ import data from '../data'
 export default function MapeoCards() {
 
     return (
-        <>
+        <div className='row'>
             {
-                    data.map(function(i) {
-                    return (<Card key={i} id={i}/>)
+                    data.map(function(i, idx) {
+                    return (
+                        <div className='col-3'>
+                            <Card key={i} id={i}/>                    
+                        </div>
+                    )
                 })
             }
-        </>
+        </div>
     )
  
 }
