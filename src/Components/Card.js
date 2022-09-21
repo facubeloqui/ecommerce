@@ -17,7 +17,7 @@ console.log(id)
                     <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 className="text-truncate mb-3">{id.nombre}</h6>
                         <div className="d-flex justify-content-center">
-                            <h6>${data[0].precio}</h6><h6 className="text-muted ml-2"><del>${id.precio * 1.25}</del></h6>
+                            <h6>${id.precio}</h6><h6 className="text-muted ml-2"><del>${id.precio * 1.25}</del></h6>
                         </div>
                     </div>
                     <div className="card-footer d-flex justify-content-between bg-light border">
