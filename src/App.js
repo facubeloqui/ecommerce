@@ -8,23 +8,22 @@ import Offer from './Components/Offer';
 import Card from './Components/Card';
 import MapeoCards from './Components/MapeoCards';
 import CarritoProvider from './Context/CarritoContext';
+import Index from './Pages/Index'
+import Cart from './Pages/Cart';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
 
 function App() {
   return (
-    <>
     <CarritoProvider>
-    <Topbar/>
-    <Navbar/>
-    <Featured/>
-    <Categories/>
-    <Offer/>
-    <div className="text-center mb-4">
-            <h2 className="section-title px-5"><span className="px-2">Trandy Products</span></h2>
-    </div>
-    
-    <MapeoCards/>
+
+    <BrowserRouter>
+    <Routes>
+    <Route path="/" element={<Index />} />
+    <Route path="/cart" element={<Cart />} />
+    </Routes>
+    </BrowserRouter>
     </CarritoProvider>
-    </>
   );
 }
 

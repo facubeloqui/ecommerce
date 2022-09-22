@@ -11,7 +11,7 @@ export default function MapeoCards() {
                     data.map(function(i, idx) {
                     return (
                         <div className='col-3'>
-                            <Card key={i} id={i}/>                    
+                            <Card key={i} producto={i}/>                    
                         </div>
                     )
                 })

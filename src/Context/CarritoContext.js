@@ -1,10 +1,10 @@
 import React,{createContext,useState} from 'react';
 
-export const AnunciosContext = createContext();
+export const CarritoContext = createContext();
 
 const CarritoProvider = (props) => {
 
-    const [carrito, setCarrito] = useState([]);
+    const [carrito, setCarrito] = useState(["LOL"]);
 
     return (
         <CarritoContext.Provider
