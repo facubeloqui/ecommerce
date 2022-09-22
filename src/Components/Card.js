@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import data from '../data';
+import { Link } from 'react-router-dom';
 
 function Card ({id}) {
 console.log(id)
@@ -30,5 +31,14 @@ console.log(id)
     
     </>
   )
+}
+
+Card.propTypes = {
+id: PropTypes.shape ({
+    nombre : PropTypes.string,
+    precio: PropTypes.number,
+    img : PropTypes.string
+
+})
 }
 export default Card;

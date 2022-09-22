@@ -7,10 +7,12 @@ import Categories from './Components/Categories';
 import Offer from './Components/Offer';
 import Card from './Components/Card';
 import MapeoCards from './Components/MapeoCards';
+import CarritoProvider from './Context/CarritoContext';
 
 function App() {
   return (
     <>
+    <CarritoProvider>
     <Topbar/>
     <Navbar/>
     <Featured/>
@@ -21,6 +23,7 @@ function App() {
     </div>
     
     <MapeoCards/>
+    </CarritoProvider>
     </>
   );
 }
