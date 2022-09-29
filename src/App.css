@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+.CardIcon {
+color: red;
+display:block;
+margin:0 auto;
+}

@@ -12,7 +12,7 @@ export default function MapeoCards() {
                     data.map(function(i, idx) {
                     return (
                         <div className='col-3'>
-                            <Card key={i} producto={i}/>                    
+                            <Card key={i} producto={i} inCart={false}/>                    
                         </div>
                     )
                 })
@@ -25,7 +25,8 @@ MapeoCards.propTypes = {
     array: PropTypes.arrayOf (PropTypes.shape ({
         nombre : PropTypes.string,
         precio: PropTypes.number,
-        img : PropTypes.string
+        img : PropTypes.string,
+        carrito : PropTypes.bool
     
     }))
     }

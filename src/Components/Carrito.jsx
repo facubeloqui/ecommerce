@@ -11,7 +11,7 @@ export default function Carrito() {
             carrito.map(function(i, idx) {
             return (
                 <div className='col-3'>
-                   <Card key={i} producto={i}/>
+                   <Card key={i} producto={i} inCart={true}/>
                 </div>
             )
         })
