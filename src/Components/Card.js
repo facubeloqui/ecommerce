@@ -1,16 +1,26 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import data from '../data';
 import { Link } from 'react-router-dom';
 import { CarritoContext } from '../Context/CarritoContext';
+import Loader from './Items/Loader';
 function Card ({producto}) {
-    const {carrito, setCarrito} = useContext(CarritoContext)
 
-    function handleAgregarCarrito () {
+    const sleep = ms => new Promise(
+        resolve => setTimeout(resolve, ms)
+      );
+    const [loading, setLoading] = useState(false)
+    const {carrito, setCarrito} = useContext(CarritoContext)
+    
+
+    async function handleAgregarCarrito () {
         console.log(carrito)
 let carritoPush = carrito
 carritoPush.push(producto)
 setCarrito(carritoPush)
+setLoading(true)
+await sleep(1000);
+setLoading(false)
     }
   return (
     <>
@@ -30,7 +40,10 @@ setCarrito(carritoPush)
                     </div>
                     <div className="card-footer d-flex justify-content-between bg-light border">
                         <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a className="btn btn-sm text-dark p-0" onClick={handleAgregarCarrito}><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+
+                        {loading
+                        ? <Loader/> : ( <a className="btn btn-sm text-dark p-0" onClick={handleAgregarCarrito}><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>)}
+                       
                     </div>
                 </div>
             </div>

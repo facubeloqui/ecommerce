@@ -4,7 +4,7 @@ export const CarritoContext = createContext();
 
 const CarritoProvider = (props) => {
 
-    const [carrito, setCarrito] = useState(["LOL"]);
+    const [carrito, setCarrito] = useState([]);
 
     return (
         <CarritoContext.Provider

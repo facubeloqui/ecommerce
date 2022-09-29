@@ -1,6 +1,12 @@
 import React from 'react'
+import { useContext } from 'react'
+import { CarritoContext } from '../Context/CarritoContext'
+import Carrito from './Carrito'
+import {Link} from "react-router-dom";
 
 export default function Topbar() {
+
+    const {carrito} = useContext(CarritoContext)
   return (
     <> <div className="container-fluid">
     <div className="row bg-secondary py-2 px-xl-5">
@@ -36,7 +42,7 @@ export default function Topbar() {
     <div className="row align-items-center py-3 px-xl-5">
         <div className="col-lg-3 d-none d-lg-block">
             <a href="" className="text-decoration-none">
-                <h1 className="m-0 display-5 font-weight-semi-bold"><span className="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                <h1 className="m-0 display-5 font-weight-semi-bold"><span className="text-primary font-weight-bold border px-3 mr-1">E</span>FSI</h1>
             </a>
         </div>
         <div className="col-lg-6 col-6 text-left">
@@ -56,10 +62,12 @@ export default function Topbar() {
                 <i className="fas fa-heart text-primary"></i>
                 <span className="badge">0</span>
             </a>
-            <a href="" className="btn border">
+            <Link to="/cart">
+        
                 <i className="fas fa-shopping-cart text-primary"></i>
-                <span className="badge">0</span>
-            </a>
+                <span className="badge">{carrito.length}</span>
+     
+            </Link>
         </div>
     </div>
 </div></>

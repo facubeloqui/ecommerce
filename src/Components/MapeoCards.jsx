@@ -6,7 +6,7 @@ import data from '../data'
 export default function MapeoCards() {
 
     return (
-        <div className='row'>
+        <div className='row' id='Cards'>
             {
                     data.map(function(i, idx) {
                     return (
