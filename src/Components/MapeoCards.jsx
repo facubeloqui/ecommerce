@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from './Card'
 import data from '../data'
+import PropTypes from 'prop-types'
 
 
 export default function MapeoCards() {
@@ -18,5 +19,13 @@ export default function MapeoCards() {
             }
         </div>
     )
- 
+
 }
+MapeoCards.propTypes = {
+    array: PropTypes.arrayOf (PropTypes.shape ({
+        nombre : PropTypes.string,
+        precio: PropTypes.number,
+        img : PropTypes.string
+    
+    }))
+    }

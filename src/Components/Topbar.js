@@ -1,12 +1,14 @@
 import React from 'react'
 import { useContext } from 'react'
-import { CarritoContext } from '../Context/CarritoContext'
+import { CarritoContext, useEffect } from '../Context/CarritoContext'
 import Carrito from './Carrito'
 import {Link} from "react-router-dom";
 
 export default function Topbar() {
 
     const {carrito} = useContext(CarritoContext)
+
+    
   return (
     <> <div className="container-fluid">
     <div className="row bg-secondary py-2 px-xl-5">

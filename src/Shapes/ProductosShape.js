@@ -7,4 +7,4 @@ Card.propTypes = {
         precio: PropTypes.number,
         img : PropTypes.string
     
-    }
+    })}
