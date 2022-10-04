@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from '../Components/Card'
-export default function Detalle(producto) {
+export default function Detalle() {
   return (
     <>
     <div className="card-header product-img position-relative overflow-hproductoden bg-transparent border p-5">
@@ -14,7 +14,7 @@ export default function Detalle(producto) {
                             <h6></h6><h6 className="text-muted ml-2"><del></del></h6>
                             <h2>Nombre del producto:</h2> 
                         </div>
-                        <h4>{producto}</h4>
+                        <h4>Precio:</h4>
                         <h6>Detalle:</h6>
                     </div>
           </div>           
