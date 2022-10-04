@@ -37,7 +37,7 @@ setLoading(false)
 
          <div className="pb-1">
                 <div className="card product-item border-0 mb-4">
-                    <div className="card-header product-img position-relative overflow-hproductoden bg-transparent border p-0">
+                    <div className="card-header product-img position-relative overflow-hproductoden bg-transparent border p-5">
                         <img className="img-fluproducto w-100" src={producto.img} alt=""/>
                     </div>
                     <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
@@ -58,7 +58,7 @@ setLoading(false)
                         </svg></div>)
                         }</>
                     
-                    :( <> <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                    :( <> <Link to="/detalle" params={{ producto: "Perel" }}><a className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a></Link> 
 
                     {loading
                     ? <Loader/> : ( <a className="btn btn-sm text-dark p-0" onClick={handleAgregarCarrito}><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>)} </>)

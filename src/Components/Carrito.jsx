@@ -9,6 +9,7 @@ export default function Carrito() {
     <div className='row'>
     {
             carrito.map(function(i, idx) {
+              
             return (
                 <div className='col-3'>
                    <Card key={i} producto={i} inCart={true}/>
