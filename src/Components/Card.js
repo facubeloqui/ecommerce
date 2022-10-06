@@ -58,7 +58,7 @@ setLoading(false)
                         </svg></div>)
                         }</>
                     
-                    :( <> <Link to="/detalle" params={{ producto: "Perel" }}><a className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a></Link> 
+                    :( <> <Link to={`/detalle/${producto.id}`} params={{ producto: producto }}><a className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a></Link> 
 
                     {loading
                     ? <Loader/> : ( <a className="btn btn-sm text-dark p-0" onClick={handleAgregarCarrito}><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>)} </>)
@@ -79,8 +79,8 @@ producto: PropTypes.shape ({
     nombre : PropTypes.string,
     precio: PropTypes.number,
     img : PropTypes.string,
-    inCart : PropTypes.bool
-
+    inCart : PropTypes.bool,
+    id: PropTypes.number
 })
 }
 export default Card;
