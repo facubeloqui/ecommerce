@@ -25,7 +25,9 @@ MapeoCards.propTypes = {
     array: PropTypes.arrayOf (PropTypes.shape ({
         nombre : PropTypes.string,
         precio: PropTypes.number,
+        descuento : PropTypes.number,
         img : PropTypes.string,
+        detalle : PropTypes.string,
         carrito : PropTypes.bool
     
     }))

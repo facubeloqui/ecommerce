@@ -11,7 +11,7 @@ function Card ({producto, inCart}) {
       );
     const [loading, setLoading] = useState(false)
     const {carrito, setCarrito, eliminarCarrito} = useContext(CarritoContext)
-
+// const [descuento,setDescuento ]= useState(1 + producto.descuento)
 
     async function handleEliminarCarrito(){
         console.log("eliminado")
@@ -43,7 +43,11 @@ setLoading(false)
                     <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 className="text-truncate mb-3">{producto.nombre}</h6>
                         <div className="d-flex justify-content-center">
-                            <h6>${producto.precio}</h6><h6 className="text-muted ml-2"><del>${producto.precio * 1.25}</del></h6>
+                          {producto.descuento == 0
+                          ? <h6>${producto.precio}</h6>
+                          :(<><h6>${producto.precio}</h6><h6 className="text-muted ml-2"><del>${producto.precio * (1 + producto.descuento)}</del></h6></>)
+                          
+                          }  
                         </div>
                     </div>
 
@@ -78,7 +82,9 @@ Card.propTypes = {
 producto: PropTypes.shape ({
     nombre : PropTypes.string,
     precio: PropTypes.number,
+    descuento : PropTypes.number,
     img : PropTypes.string,
+    detalle : PropTypes.string,
     inCart : PropTypes.bool,
     id: PropTypes.number
 })
