@@ -23,12 +23,12 @@ function Card ({producto, inCart}) {
 
     async function handleAgregarCarrito () {
         console.log(carrito)
-let carritoPush = carrito
-carritoPush.push(producto)
-setCarrito(carritoPush)
-setLoading(true)
-await sleep(1000);
-setLoading(false)
+        let carritoPush = carrito
+        carritoPush.push(producto)
+        setCarrito(carritoPush)
+        setLoading(true)
+        await sleep(1000);
+        setLoading(false)
     }
   return (
     <>

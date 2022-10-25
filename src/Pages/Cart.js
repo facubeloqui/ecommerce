@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react'
 import Carrito from '../Components/Carrito'
 import { CarritoContext } from '../Context/CarritoContext'
 export default function Cart() {
-    const {carrito} = useContext(CarritoContext)
+  const {carrito} = useContext(CarritoContext)
   return (
     <>
     <div className="col-lg-3 col-6 text-left">       
