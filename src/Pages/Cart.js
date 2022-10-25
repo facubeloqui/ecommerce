@@ -6,7 +6,8 @@ export default function Cart() {
     const {carrito} = useContext(CarritoContext)
   return (
     <>
-    <i className="fas fa-shopping-cart text-primary"></i> ({carrito.length}): 
+    <i className="fas fa-shopping-cart text-primary"></i>:
+    <span className="badge">{carrito.length}</span> 
     <Carrito/>
 
     </>
