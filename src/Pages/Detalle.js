@@ -1,14 +1,44 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
 import { useParams } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import Card from '../Components/Card'
 import data from '../data'
 import { Button } from '@mui/material'
-
+import { CarritoContext } from '../Context/CarritoContext'
+import Loader from '../Components/Items/Loader'
 export default function Detalle({ producto }) {
   const { id } = useParams()
   console.log(id);
   const prodFiltrado = data.filter(product => product.id === parseInt(id))[0]
 
+  const sleep = ms => new Promise(
+    resolve => setTimeout(resolve, ms)
+  );
+const [loading, setLoading] = useState(false)
+const [agregado, setAgregado] = useState(false)
+const {carrito, setCarrito, eliminarCarrito} = useContext(CarritoContext)
+// const [descuento,setDescuento ]= useState(1 + producto.descuento)
+
+async function handleEliminarCarrito(){
+    console.log("eliminado")
+    setLoading(true)
+    eliminarCarrito(producto)
+    setLoading(false)
+    
+}
+
+async function handleAgregarCarrito () {
+    console.log(carrito)
+    let carritoPush = carrito
+    carritoPush.push(prodFiltrado)
+    setCarrito(carritoPush)
+    setLoading(true)
+    await sleep(1000);
+    setLoading(false)
+    if (agregado == false) {
+      setAgregado(true)
+    }
+}
   return (
     <>
       <div className="card-header product-img position-relative overflow-hproductoden bg-transparent border p-5">
@@ -24,9 +54,14 @@ export default function Detalle({ producto }) {
             </div>
             <h4>${prodFiltrado.precio}</h4>
             <h6>Detalle: {prodFiltrado.detalle}</h6>
-            <Button variant="contained" color="success">
-    <a className="btn btn-sm text-dark p-0" ><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-            </Button>
+            {loading ? <Loader/> : (<> {agregado ? (<> <Button variant="contained" color="success">
+     <a className="btn btn-sm text-dark p-0" onClick={handleAgregarCarrito}><i className="fas fa-shopping-cart text-primary mr-1"></i>+ 1</a>
+             </Button></>) : (<> <Button variant="contained" color="success">
+     <a className="btn btn-sm text-dark p-0" onClick={handleAgregarCarrito}><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+             </Button></>)}</>) }
+            
+             
+           
           </div>
         </div>
         
@@ -35,3 +70,14 @@ export default function Detalle({ producto }) {
     </>
   )
 }
+Card.propTypes = {
+  prodFiltrado: PropTypes.shape ({
+      nombre : PropTypes.string,
+      precio: PropTypes.number,
+      descuento : PropTypes.number,
+      img : PropTypes.string,
+      detalle : PropTypes.string,
+      inCart : PropTypes.bool,
+      id: PropTypes.number
+  })
+  }

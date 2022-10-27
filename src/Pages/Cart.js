@@ -7,11 +7,12 @@ export default function Cart() {
   return (
     <>
     <div className="col-lg-3 col-6 text-left">       
-      <i className="fas fa-heart text-primary"></i>
-      <span className="badge">0</span>
+    
       <i className="fas fa-shopping-cart text-primary"></i>
       <span className="badge">{carrito.length}</span>
+      <h1>Carrito {carrito.length}</h1>
     </div>
+    
     <Carrito/>
     </>
   )
