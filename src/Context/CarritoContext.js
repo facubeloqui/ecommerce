@@ -5,7 +5,7 @@ export const CarritoContext = createContext();
 const CarritoProvider = (props) => {
 
     const [carrito, setCarrito] = useState([]);
-
+const [carritoID, setCarritoID] = useState([])
     useEffect(() => {  
         localStorage.setItem('carrito', JSON.stringify(carrito))
         console.log(carrito)
@@ -33,7 +33,10 @@ const CarritoProvider = (props) => {
             value={{
                 setCarrito,
                 carrito,
-                eliminarCarrito
+                eliminarCarrito,
+                carritoID,
+                setCarritoID
+
             }}
         >
             {props.children}

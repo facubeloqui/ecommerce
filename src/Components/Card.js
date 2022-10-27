@@ -10,7 +10,7 @@ function Card ({producto, inCart}) {
         resolve => setTimeout(resolve, ms)
       );
     const [loading, setLoading] = useState(false)
-    const {carrito, setCarrito, eliminarCarrito} = useContext(CarritoContext)
+    const {carrito, setCarrito, eliminarCarrito, carritoID, setCarritoID} = useContext(CarritoContext)
 // const [descuento,setDescuento ]= useState(1 + producto.descuento)
 
     async function handleEliminarCarrito(){
@@ -23,9 +23,13 @@ function Card ({producto, inCart}) {
 
     async function handleAgregarCarrito () {
         console.log(carrito)
+        console.log(carritoID)
         let carritoPush = carrito
         carritoPush.push(producto)
         setCarrito(carritoPush)
+        let carritoIDPush = carritoID
+        carritoIDPush.push(producto.id)
+        setCarritoID(carritoIDPush)
         setLoading(true)
         await sleep(1000);
         setLoading(false)
