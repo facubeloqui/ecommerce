@@ -5,19 +5,19 @@ export const CarritoContext = createContext();
 const CarritoProvider = (props) => {
 
     const [carrito, setCarrito] = useState([]);
-const [carritoID, setCarritoID] = useState([])
+    const [carritoID, setCarritoID] = useState([]);
+
     useEffect(() => {  
+        if(carrito.length > 0)
         localStorage.setItem('carrito', JSON.stringify(carrito))
         console.log(carrito)
     }, [carrito])
     
     useEffect(() => {
         const carrito = JSON.parse(localStorage.getItem('carrito'));
-        if (carrito) {
-            setCarrito(carrito);
-           }
+        setCarrito(carrito);
     },[])
-    
+
     function eliminarCarrito (item) {
         // let carritoUpdated = []
         const items = carrito
@@ -27,7 +27,15 @@ const [carritoID, setCarritoID] = useState([])
         // ["a", "b", "d", "e", "f"]
     console.log(filteredItems)
     setCarrito(filteredItems)
-}
+    }
+
+    function agregarCarrito(producto) {
+        const idArray = carrito.map((producto)=>producto.id)
+        if(!idArray.includes(producto.id)){
+            setCarrito([...carrito, producto])
+        }
+    }
+
     return (
         <CarritoContext.Provider
             value={{
@@ -35,8 +43,8 @@ const [carritoID, setCarritoID] = useState([])
                 carrito,
                 eliminarCarrito,
                 carritoID,
-                setCarritoID
-
+                setCarritoID,
+                agregarCarrito
             }}
         >
             {props.children}

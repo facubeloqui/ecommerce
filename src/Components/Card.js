@@ -10,7 +10,7 @@ function Card ({producto, inCart}) {
         resolve => setTimeout(resolve, ms)
       );
     const [loading, setLoading] = useState(false)
-    const {carrito, setCarrito, eliminarCarrito, carritoID, setCarritoID} = useContext(CarritoContext)
+    const {carrito, setCarrito, eliminarCarrito, carritoID, setCarritoID, agregarCarrito} = useContext(CarritoContext)
 // const [descuento,setDescuento ]= useState(1 + producto.descuento)
 
     async function handleEliminarCarrito(){
@@ -22,7 +22,7 @@ function Card ({producto, inCart}) {
     }
 
     async function handleAgregarCarrito () {
-        console.log(carrito)
+        console.log('Desde el card', carrito)
         console.log(carritoID)
         let carritoPush = carrito
         carritoPush.push(producto)
@@ -69,7 +69,7 @@ function Card ({producto, inCart}) {
                     :( <> <Link to={`/detalle/${producto.id}`} params={{ producto: producto }}><a className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a></Link> 
 
                     {loading
-                    ? <Loader/> : ( <a className="btn btn-sm text-dark p-0" onClick={handleAgregarCarrito}><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>)} </>)
+                    ? <Loader/> : ( <a className="btn btn-sm text-dark p-0" onClick={() => agregarCarrito(producto)}><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>)} </>)
                    }
                        
                        
