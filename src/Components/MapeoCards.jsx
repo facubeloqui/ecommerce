@@ -12,7 +12,7 @@ export default function MapeoCards() {
                     data.map(function(i, idx) {
                     return (
                         <div className='col-3'>
-                            <Card key={i} producto={i} inCart={false}/>                    
+                            <Card key={i} producto={i} cantidad={1} inCart={false}/>                    
                         </div>
                     )
                 })
