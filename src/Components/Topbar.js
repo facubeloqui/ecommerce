@@ -9,7 +9,7 @@ export default function Topbar() {
     const { carrito } = useContext(CarritoContext)
 
 
-    return (
+    return carrito && (
         <div>
             <div className="container-fluid">
                 <div className="row bg-secondary py-2 px-xl-5">
