@@ -1,4 +1,4 @@
-import React,{createContext,useState, useEffect} from 'react';
+import React, { createContext, useState, useEffect, useMemo } from 'react';
 
 export const CarritoContext = createContext();
 
@@ -7,18 +7,19 @@ const CarritoProvider = (props) => {
     const [carrito, setCarrito] = useState([]);
     const [carritoID, setCarritoID] = useState([]);
 
-    useEffect(() => {  
-        if(carrito.length > 0)
-        localStorage.setItem('carrito', JSON.stringify(carrito))
+    useEffect(() => {
+        if (!carrito) return;
+        if (carrito.length > 0)
+            localStorage.setItem('carrito', JSON.stringify(carrito))
         console.log(carrito)
     }, [carrito])
-    
+
     useEffect(() => {
         const carrito = JSON.parse(localStorage.getItem('carrito'));
         setCarrito(carrito);
-    },[])
+    }, [])
 
-    function eliminarCarrito (item) {
+    function eliminarCarrito(item) {
         // let carritoUpdated = []
 
         const items = carrito
@@ -26,65 +27,69 @@ const CarritoProvider = (props) => {
         const valueToRemove = item
         const filteredItems = items.filter(item => item.producto !== valueToRemove)
         // ["a", "b", "d", "e", "f"]
-    console.log(filteredItems)
-    setCarrito(filteredItems)
+        console.log(filteredItems)
+        setCarrito(filteredItems)
     }
 
     function agregarCarrito(producto) {
-        const idArray = carrito.map((item)=>item.producto.id)
-        if(!idArray.includes(producto.id)){
-            setCarrito([...carrito, {producto,cant:1}])
-        }else{
-           carrito.map(function(item){
-            if(item.producto.id === producto.id){
-                
-                item.cant = item.cant + 1
-            }
-           })
+        const idArray = carrito.map((item) => item.producto.id)
+        if (!idArray.includes(producto.id)) {
+            setCarrito([...carrito, { producto, cant: 1 }])
+        } else {
+            carrito.map(function (item) {
+                if (item.producto.id === producto.id) {
+
+                    item.cant = item.cant + 1
+                }
+            })
 
 
-        } 
+        }
     }
-    function sumarProducto(id){
+    function sumarProducto(id) {
 
         // carrito.map(function(item){
         //     if(item.producto.id === id){
-                
+
         //         item.cant = item.cant + 1
         //         localStorage.setItem('carrito', JSON.stringify(carrito))
         //     }
         //    })
 
         let temp = carrito
-        temp.map(function(item){
-            if(item.producto.id === id) item.cant = item.cant + 1
-           })
-        
+        temp.map(function (item) {
+            if (item.producto.id === id) item.cant = item.cant + 1
+        })
+
         setCarrito(temp)
-           localStorage.setItem('carrito', JSON.stringify(temp))
+        localStorage.setItem('carrito', JSON.stringify(temp))
     }
-    function restarProducto(id){
-        carrito.map(function(item){
-            if(item.producto.id === id){
-                
+    function restarProducto(id) {
+        carrito.map(function (item) {
+            if (item.producto.id === id) {
+
                 item.cant = item.cant - 1
                 localStorage.setItem('carrito', JSON.stringify(carrito))
             }
-           })
+        })
     }
+
+    const value = useMemo(() => {
+        return {
+            setCarrito,
+            carrito,
+            eliminarCarrito,
+            carritoID,
+            setCarritoID,
+            agregarCarrito,
+            sumarProducto,
+            restarProducto
+        }
+    }, [carrito, carritoID])
 
     return (
         <CarritoContext.Provider
-            value={{
-                setCarrito,
-                carrito,
-                eliminarCarrito,
-                carritoID,
-                setCarritoID,
-                agregarCarrito,
-                sumarProducto,
-                restarProducto
-            }}
+            value={value}
         >
             {props.children}
         </CarritoContext.Provider>
