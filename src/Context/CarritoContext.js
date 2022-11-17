@@ -9,14 +9,16 @@ const CarritoProvider = (props) => {
 
     useEffect(() => {
         if (!carrito) return;
-        if (carrito.length > 0)
+        if (carrito.length > 0) {
             localStorage.setItem('carrito', JSON.stringify(carrito))
-        console.log(carrito)
+        } else {
+            console.log(carrito)
+        }
     }, [carrito])
 
     useEffect(() => {
         const carrito = JSON.parse(localStorage.getItem('carrito'));
-        setCarrito(carrito);
+        setCarrito(carrito || []);
     }, [])
 
     function eliminarCarrito(item) {
